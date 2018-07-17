@@ -10,6 +10,7 @@
  */
 
 namespace BigBox\Child;
+use BigBox\Registerable as Registerable;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -30,7 +31,7 @@ final class Theme implements Registerable {
 	 * @throws Exception\InvalidService If a service is not valid.
 	 */
 	public function register() {
-		add_action( 'after_setup_theme', [ $this, 'load_helpers' ], 0 );
+		add_action( 'after_setup_theme', [ $this, 'load_helpers' ], 25 );
 	}
 
 	/**

@@ -15,5 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-ThemeFactory::create()
-	->register();
+add_action(
+	'after_setup_theme', function() {
+		ThemeFactory::create()
+			->register();
+	},
+	20
+);
