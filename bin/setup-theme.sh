@@ -33,11 +33,5 @@ npm install
 status "Installing PHP dependencies..."
 composer install 
 
-status "Generating .pot file..."
-wp i18n make-pot . resources/languages/bigbox.pot --domain=bigbox
-
-status "Generating Google Fonts..."
-npm run generate-font-list
-
 status "Building and watching assets..."
 npm run dev

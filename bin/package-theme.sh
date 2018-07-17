@@ -63,35 +63,24 @@ status "Installing dependencies..."
 npm install
 composer install
 
-status "Creating language files..."
-wp i18n make-pot . resources/languages/bigbox.pot --domain=bigbox
-
-status "Updating Google Fonts..."
-npm run generate-font-list
-
 status "Generating build..."
 npm run build
 
 # Update version in files.
-sed -i "" "s|%BIGBOX_VERSION%|${PACKAGE_VERSION}|g" style.css
-sed -i "" "s|%BIGBOX_VERSION%|${PACKAGE_VERSION}|g" functions.php
+sed -i "" "s|%BIGBOX_CHILD_VERSION%|${PACKAGE_VERSION}|g" style.css
+sed -i "" "s|%BIGBOX_CHILD_VERSION%|${PACKAGE_VERSION}|g" functions.php
 
 # Remove any existing zip file
 rm -f bigbox*.zip
 
 # Generate the theme zip file
 status "Creating archive..."
-zip -r bigbox.zip \
+zip -r bigbox-child.zip \
 	functions.php \
-	footer.php \
-	header.php \
-	index.php \
 	style.css \
 	app \
 	bootstrap \
-	resources/languages/*.{po,mo,pot} \
 	resources/views \
-	resources/data/*.json \
 	public \
 	vendor/ \
 	LICENSE \
@@ -100,8 +89,8 @@ zip -r bigbox.zip \
 	-x *.git*
 
 # Rename and cleanup.
-unzip bigbox.zip -d bigbox && zip -r "bigbox-$PACKAGE_VERSION.zip" bigbox
-rm -rf bigbox && rm -f bigbox.zip
+unzip bigbox-child.zip -d bigbox-child && zip -r "bigbox-child-$PACKAGE_VERSION.zip" bigbox-child
+rm -rf bigbox-child && rm -f bigbox-child.zip
 
 # Reset generated files.
 git reset head --hard

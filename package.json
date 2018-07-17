@@ -1,9 +1,9 @@
 {
-	"name": "bigbox",
-	"title": "BigBox",
+	"name": "bigbox-child",
+	"title": "BigBox Child",
 	"author": "Spencer Finnell",
 	"description": "Easily manage and scale WooCommerce product catalogs.",
-	"version": "1.10.0",
+	"version": "1.0.0",
 	"license": "GPL-2.0-or-later",
 	"main": "webpack.config.js",
 	"engines": {
@@ -12,7 +12,6 @@
 	},
 	"devDependencies": {
 		"@wordpress/babel-preset-default": "1.3.0",
-		"@wordpress/dom-ready": "1.0.4",
 		"autoprefixer": "8.6.3",
 		"babel-core": "6.26.3",
 		"babel-eslint": "8.2.5",
@@ -30,7 +29,6 @@
 		"exports-loader": "^0.7.0",
 		"extract-text-webpack-plugin": "4.0.0-beta.0",
 		"file-loader": "^1.1.11",
-		"fitvids": "^2.0.0",
 		"node-sass": "^4.9.0",
 		"postcss-loader": "^2.1.5",
 		"raw-loader": "^0.5.1",
@@ -61,7 +59,6 @@
 		"css-lint": "./node_modules/.bin/stylelint resources/**/*.scss --syntax scss; exit 0",
 		"css-lint:fix": "./node_modules/.bin/stylelint resources/**/*.scss --syntax scss --fix; exit 0",
 		"dev": "cross-env NODE_ENV=default webpack --watch",
-		"generate-font-list": "./bin/generate-google-font-list.sh",
 		"lint": "./node_modules/.bin/eslint .; exit 0",
 		"lint:fix": "./node_modules/.bin/eslint . --fix; exit 0",
 		"lint:jsdoc": "eslint . --config eslint/jsdoc-config.js; exit 0",
@@ -70,10 +67,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/bigboxwc/bigbox-theme/"
+		"url": "https://github.com/bigboxwc/bigbox-child-dev/"
 	},
 	"bugs": {
-		"url": "https://github.com/bigboxwc/bigbox-theme/issues"
+		"url": "https://github.com/bigboxwc/bigbox-child-dev/issues"
 	},
 	"homepage": "https://bigboxwc.com"
 }
