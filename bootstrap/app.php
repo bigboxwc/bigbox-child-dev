@@ -20,5 +20,5 @@ add_action(
 		ThemeFactory::create()
 			->register();
 	},
-	20
+	1	
 );
