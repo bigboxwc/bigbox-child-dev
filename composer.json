@@ -1,0 +1,23 @@
+{
+	"name": "bigbox",
+	"description": "WooCommerce theme for large stores.",
+	"type": "wordpress-theme",
+	"license": "GPL-3.0",
+	"authors": [
+		{
+			"name": "Spencer Finnell",
+			"email": "contact@bigboxwc.com"
+		}
+	],
+	"autoload": {
+		"classmap": ["app/"]
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"lint:fix": "phpcbf"
+	},
+	"require": {
+		"a5hleyrich/wp-background-processing": "^1.0",
+		"bigboxwc/wp-template-loader": "1.0.2"
+	}
+}
