@@ -28,42 +28,38 @@ elif ! git diff --cached --exit-code > /dev/null; then
 fi
 if [ ! -z "$changed" ]; then
 	git status
-	echo "ERROR: Cannot build theme zip with dirty working tree."
-	echo "       Commit your changes and try again."
+	error_message "ERROR: Cannot build theme zip with dirty working tree. Commit your changes and try again."
 	exit 1
 fi
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 if [ "$branch" != 'master' ]; then
-	echo "WARNING: You should probably be running this script against the"
-	echo "         'master' branch (current: '$branch')"
+	warning_message "WARNING: You should probably be running this script against the master' branch (current: '$branch')"
 	echo
 	sleep 2
 fi
 
 # Do a dry run of the repository reset. Prompting the user for a list of all
 # files that will be removed should prevent them from losing important files!
-status "Resetting the repository to pristine condition."
+status_message "Resetting the repository to pristine condition."
 git clean -xdf --dry-run
-warning "About to delete everything above! Is this okay?"
-echo -n "[Y]es/[N]o: "
-read answer
-if [ "$answer" != "${answer#[Yy]}" ]; then
+
+if ask "$(error_message "About to delete everything above! Is this okay?")" Y; then
 	# Remove ignored files to reset repository to pristine condition. Previous
 	# test ensures that changed files abort the plugin build.
-	status "Cleaning working directory..."
+	status_message "Cleaning working directory..."
 	git clean -xdf
 else
-	error "Aborting."
-	exit 1
+	error_message "Aborting."
+	exit 0
 fi
 
 # Run the build
-status "Installing dependencies..."
+status_message "Installing dependencies..."
 npm install
 composer install
 
-status "Generating build..."
+status_message "Generating build..."
 npm run build
 
 # Update version in files.
@@ -74,7 +70,7 @@ sed -i "" "s|%BIGBOX_CHILD_VERSION%|${PACKAGE_VERSION}|g" functions.php
 rm -f bigbox*.zip
 
 # Generate the theme zip file
-status "Creating archive..."
+status_message "Creating archive..."
 zip -r bigbox-child.zip \
 	functions.php \
 	style.css \
@@ -95,4 +91,4 @@ rm -rf bigbox-child && rm -f bigbox-child.zip
 # Reset generated files.
 git reset head --hard
 
-success "📦  Version $PACKAGE_VERSION build complete."
+success_message "📦  Version $PACKAGE_VERSION build complete."
