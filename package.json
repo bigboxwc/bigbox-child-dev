@@ -22,10 +22,7 @@
 		"classnames": "^2.2.5",
 		"cross-env": "^5.1.4",
 		"eslint": "5.0.0",
-		"eslint-config-wordpress": "2.0.0",
-		"eslint-plugin-jsx-a11y": "6.0.3",
-		"eslint-plugin-react": "7.10.0",
-		"eslint-plugin-wordpress": "git://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress.git#1774343f6226052a46b081e01db3fca8793cc9f1",
+		"eslint-plugin-wordpress": "git://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress.git#a650f73e2461ddae0faec900c0199b3c258cb5da",
 		"exports-loader": "^0.7.0",
 		"extract-text-webpack-plugin": "4.0.0-beta.0",
 		"file-loader": "^1.1.11",
@@ -41,6 +38,17 @@
 		"webpack": "^4.8.1",
 		"webpack-cli": "^3.0.3",
 		"webpack-rtl-plugin": "github:yoavf/webpack-rtl-plugin#develop"
+	},
+	"eslintConfig": {
+		"extends": [
+			"plugin:wordpress/recommended",
+			"plugin:wordpress/esnext",
+			"plugin:wordpress/jsdoc",
+			"plugin:wordpress/strict"
+		],
+		"plugins": [
+			"wordpress"
+		]
 	},
 	"babel": {
 		"presets": [
