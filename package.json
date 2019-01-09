@@ -36,7 +36,7 @@
 		"svgo-loader": "2.2.0",
 		"webpack": "4.28.1",
 		"webpack-cli": "3.2.1",
-		"webpack-rtl-plugin": "^1.7.0"
+		"webpack-rtl-plugin": "1.7.0"
 	},
 	"babel": {
 		"presets": [
