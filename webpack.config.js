@@ -91,6 +91,7 @@ const config = {
 	externals: {
 		jquery: 'jQuery',
 		$: 'jQuery',
+		'@wordpress/element': 'wp.element',
 	},
 	plugins: [
 		themeCSS,

@@ -11,21 +11,20 @@
 		"npm": ">=6.0.0"
 	},
 	"devDependencies": {
+		"@babel/core": "7.2.2",
+		"@wordpress/babel-plugin-import-jsx-pragma": "1.1.2",
 		"@wordpress/babel-preset-default": "3.0.1",
+		"@wordpress/browserslist-config": "2.2.2",
+		"@wordpress/dom-ready": "2.0.2",
+		"@wordpress/eslint-plugin": "1.0.0",
 		"autoprefixer": "9.4.4",
-		"babel-core": "6.26.3",
-		"babel-eslint": "10.0.1",
 		"babel-loader": "8.0.5",
 		"babel-plugin-import-glob": "2.0.0",
-		"babel-plugin-transform-react-jsx": "6.24.1",
 		"bootstrap": "4.2.1",
-		"classnames": "2.2.6",
 		"cross-env": "5.2.0",
 		"eslint": "5.12.0",
-		"eslint-plugin-wordpress": "git://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress.git#a650f73e2461ddae0faec900c0199b3c258cb5da",
 		"exports-loader": "0.7.0",
 		"extract-text-webpack-plugin": "4.0.0-beta.0",
-		"file-loader": "3.0.1",
 		"node-sass": "4.11.0",
 		"postcss-loader": "3.0.0",
 		"raw-loader": "1.0.0",
@@ -37,30 +36,29 @@
 		"svgo-loader": "2.2.0",
 		"webpack": "4.28.1",
 		"webpack-cli": "3.2.1",
-		"webpack-rtl-plugin": "github:yoavf/webpack-rtl-plugin#develop"
-	},
-	"eslintConfig": {
-		"extends": [
-			"plugin:wordpress/recommended",
-			"plugin:wordpress/esnext",
-			"plugin:wordpress/jsdoc",
-			"plugin:wordpress/strict"
-		],
-		"plugins": [
-			"wordpress"
-		]
+		"webpack-rtl-plugin": "^1.7.0"
 	},
 	"babel": {
 		"presets": [
-			"@wordpress/default",
+			"@wordpress/babel-preset-default",
 			{
 				"plugins": [
 					"import-glob",
-					"transform-react-jsx"
+					[
+						"@wordpress/babel-plugin-import-jsx-pragma",
+						{
+							"scopeVariable": "createElement",
+							"source": "@wordpress/element",
+							"isDefault": false
+						}
+					]
 				]
 			}
 		]
 	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
 	"scripts": {
 		"build": "cross-env NODE_ENV=production webpack",
 		"check-licenses": "./bin/check-npm-licenses.sh; exit 0",
