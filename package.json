@@ -34,7 +34,7 @@
 		"svg-sprite-loader": "4.1.6",
 		"svgo": "1.2.2",
 		"svgo-loader": "2.2.1",
-		"webpack": "4.35.2",
+		"webpack": "4.35.3",
 		"webpack-cli": "3.3.5",
 		"webpack-rtl-plugin": "2.0.0"
 	},
